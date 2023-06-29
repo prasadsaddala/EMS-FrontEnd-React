@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as BrowserRouter,Route, Routes}  from 'react-router-dom'
+
+import HeaderComponent from './components/HeaderComponent';
+import Employees from './components/Employees';
+import AddEmployee from './components/AddEmployee';
+import FooterComponent from './components/FooterComponent';
+import Registration from './components/Registration';
+import Login from './components/Login';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div>
+          <div classname="container">
+            <HeaderComponent />
+              <br></br>  
+              <br></br>
+              <div className="container">
+                <Routes>
+                    <Route exact path="/Login" element={<Login/>}/>
+                    <Route exact path="/Employees" element={<Employees/>}/>
+                    <Route exact path="/add-employee" element={<AddEmployee/>}/>
+                    <Route exact path="/add-employee/:id" element={<AddEmployee/>}/>
+                    <Route exact path="/Registration" element={<Registration/>}/>
+
+                 </Routes>
+              </div>  
+            <FooterComponent />
+          </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
